@@ -70,5 +70,13 @@ CREATE TABLE erp_secao (
         dtalteracao date not null,
         hralteracao time not null
  )
-
+CREATE TABLE erp_formapagrec(
+        idrecebimento integer not null primary key,
+        descricao varchar(80) not null,
+        tp_condicao varchar(1) not null default 'T',
+        flag_entrada varchar(1) not null,
+        qtdparcela integer default 0,
+        dtalteracao date null,
+        hralteracar time not null
+)
 ```
