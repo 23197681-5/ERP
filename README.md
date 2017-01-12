@@ -21,7 +21,6 @@ VALUES('Suporte',
        'Suporte',
        '03/01/2017',
        '15:04')
-DROP TABLE ERP_ULTIMOUSUARIO
 CREATE TABLE erp_UltimoUsuario(Id integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
                                                                                    Nome varchar(20) NOT NULL,
                                                                                                     Senha varchar(10) NOT NULL)
