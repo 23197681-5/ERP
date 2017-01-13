@@ -78,5 +78,15 @@ CREATE TABLE erp_formapagrec(
         qtdparcela integer default 0,
         dtalteracao date null,
         hralteracar time not null
-)
+)CREATE TABLE erp_estoque_analitico(
+        idproduto integer not null,
+        idplanilha integer not null,
+        tpmovimento varchar(1)  not null,
+        quantidade Decimal(10,3) default 0,
+        obcervacao varchar(255),
+        idusuario integer,
+       dtalteracao date not null,
+        hralteracar time not null,
+          PRIMARY KEY (idproduto,idplanilha))
+
 ```
