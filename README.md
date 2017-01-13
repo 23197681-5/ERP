@@ -92,8 +92,9 @@ CREATE TABLE erp_estoque_analitico(
         quantidade Decimal(10,3) default 0,
         obcervacao varchar(255),
         idusuario integer,
-       dtalteracao date not null,
+        dtalteracao date not null,
         hralteracar time not null,
-          PRIMARY KEY (idproduto,idplanilha))
+        PRIMARY KEY (idproduto,idplanilha)
+   )
 
 ```
