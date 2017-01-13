@@ -3,14 +3,14 @@ ERP
 ```SQL
 
 CREATE TABLE erp_usuario(
-    idusuario integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
-    login varchar(20) NOT NULL UNIQUE,
-    senha varchar(10) NOT NULL,
-    nome varchar(80),
-    email varchar(80),
-    fone varchar(20),
-    dtalteracao date NOT NULL,
-    hralteracao TIME NOT NULL) GO
+        idusuario integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
+        login varchar(20) NOT NULL UNIQUE,
+        senha varchar(10) NOT NULL,
+        nome varchar(80),
+        email varchar(80),
+        fone varchar(20),
+        dtalteracao date NOT NULL,
+        hralteracao TIME NOT NULL) GO
 COMMIT
 INSERT INTO ERP_USUARIO(login,
                         senha,
@@ -33,28 +33,29 @@ VALUES('Usuario',
 COMMIT
 SELECT *
 FROM erp_UltimoUsuario
-CREATE TABLE erp_config_contador( chave varchar(20)PRIMARY KEY NOT NULL,
-                                                               contador integer)
+CREATE TABLE erp_config_contador( 
+        chave varchar(20)PRIMARY KEY NOT NULL,
+        contador integer)
 CREATE TABLE ERP_GRUPO( 
-         idgrupo integer PRIMARY KEY NOT NULL,
-         descricao varchar(80) NOT NULL,
-         idsecao integer NOT NULL,
-         dtalteracao date NOT NULL,
-         hralteracao TIME NOT NULL)
+        idgrupo integer PRIMARY KEY NOT NULL,
+        descricao varchar(80) NOT NULL,
+        idsecao integer NOT NULL,
+        dtalteracao date NOT NULL,
+        hralteracao TIME NOT NULL)
 CREATE TABLE EPR_produto_preco_historico( 
-         idproduto integer NOT NULL,
-         idplanilha integer NOT NULL,
-         valro Decimal(10, 2) DEFAULT 0,
-         observacao varchar(255),
-         idusuario integer, dtalteracao date NOT NULL,
-         hralteracao TIME NOT NULL,
-         PRIMARY KEY (idproduto,
-         idplanilha))
+        idproduto integer NOT NULL,
+        idplanilha integer NOT NULL,
+        valro Decimal(10, 2) DEFAULT 0,
+        observacao varchar(255),
+        idusuario integer, dtalteracao date NOT NULL,
+        hralteracao TIME NOT NULL,
+        PRIMARY KEY (idproduto,
+        idplanilha))
 CREATE TABLE erp_produto_preco( 
-         idproduto integer PRIMARY KEY NOT NULL,
-         valor decimal(10, 2) DEFAULT 0,
-         idusuario integer, dtalteracao date NOT NULL,
-         hralteracao TIME NOT NULL)
+        idproduto integer PRIMARY KEY NOT NULL,
+        valor decimal(10, 2) DEFAULT 0,
+        idusuario integer, dtalteracao date NOT NULL,
+        hralteracao TIME NOT NULL)
 CREATE TABLE ERP_CLIENTE(
         idcliente integer PRIMARY KEY NOT NULL,
         nome varchar(80) NOT NULL,
@@ -95,6 +96,11 @@ CREATE TABLE erp_estoque_analitico(
         dtalteracao date not null,
         hralteracar time not null,
         PRIMARY KEY (idproduto,idplanilha)
-   )
-
+ )
+CREATE TABLE erp_estoque_saldo(
+        idproduto integer primary key not null,
+        saldo decimal(10, 2) default 0,
+        dtalteracao date not null,
+        hralteracar time not null
+)
 ```
