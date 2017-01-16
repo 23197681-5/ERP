@@ -103,4 +103,14 @@ CREATE TABLE erp_estoque_saldo(
         dtalteracao date not null,
         hralteracar time not null
 )
+CREATE TABLE erp_produto_preco_historico(
+        idproduto integer not null,
+        idplanilha integer not null,
+        valor decimal(10,2) default 0,
+        observacao varchar(255),
+        idusuario integer,
+        dtalteracao date not null,
+        hralteracar time not null,
+        primary key(idproduto, idplanilha)
+)
 ```
