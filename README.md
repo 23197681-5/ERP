@@ -78,40 +78,11 @@ CREATE TABLE erp_secao (
         dtalteracao date not null,
         hralteracao time not null
  )
-CREATE TABLE erp_formapagrec(
-        idrecebimento integer not null primary key,
-        descricao varchar(80) not null,
-        tp_condicao varchar(1) not null default 'T',
-        flag_entrada varchar(1) not null,
-        qtdparcela integer default 0,
-        dtalteracao date null,
-        hralteracar time not null
-)
-CREATE TABLE erp_estoque_analitico(
-        idproduto integer not null,
-        idplanilha integer not null,
-        tpmovimento varchar(1)  not null,
-        quantidade Decimal(10,3) default 0,
-        obcervacao varchar(255),
+CREATE TABLE erp_produto_preco(
+        idproduto integer not null primary key,
+        valor decimal(10, 2) default 0,
         idusuario integer,
         dtalteracao date not null,
-        hralteracar time not null,
-        PRIMARY KEY (idproduto,idplanilha)
- )
-CREATE TABLE erp_estoque_saldo(
-        idproduto integer primary key not null,
-        saldo decimal(10, 2) default 0,
-        dtalteracao date not null,
-        hralteracar time not null
-)
-CREATE TABLE erp_produto_preco_historico(
-        idproduto integer not null,
-        idplanilha integer not null,
-        valor decimal(10,2) default 0,
-        observacao varchar(255),
-        idusuario integer,
-        dtalteracao date not null,
-        hralteracar time not null,
-        primary key(idproduto, idplanilha)
+        hralteracao time not null
 )
 ```
