@@ -122,5 +122,5 @@ CREATE TABLE erp_produto_preco(
         hralteracao time not null
 )
 
-![Image of Yaktocat](https://github.com/WillianLauber/ERP/blob/master/resources/TELAS/IMAGEMERP.jpg)
+[Image of Yaktocat](https://github.com/WillianLauber/ERP/blob/master/resources/TELAS/IMAGEMERP.jpg)
 ```
