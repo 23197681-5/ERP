@@ -36,22 +36,24 @@ SELECT *
 FROM erp_UltimoUsuario
 CREATE TABLE erp_config_contador( 
         chave varchar(20)PRIMARY KEY NOT NULL,
-        contador integer)
+        contador integer
+        )
 CREATE TABLE ERP_GRUPO( 
         idgrupo integer PRIMARY KEY NOT NULL,
         descricao varchar(80) NOT NULL,
         idsecao integer NOT NULL,
         dtalteracao date NOT NULL,
-        hralteracao TIME NOT NULL)
-CREATE TABLE EPR_produto_preco_historico( 
+        hralteracao TIME NOT NULL
+        )
+CREATE TABLE erp_produto_preco_historico( 
         idproduto integer NOT NULL,
         idplanilha integer NOT NULL,
         valro Decimal(10, 2) DEFAULT 0,
         observacao varchar(255),
         idusuario integer, dtalteracao date NOT NULL,
         hralteracao TIME NOT NULL,
-        PRIMARY KEY (idproduto,
-        idplanilha))
+        PRIMARY KEY (idproduto,idplanilha) 
+      )
 CREATE TABLE erp_produto_preco( 
         idproduto integer PRIMARY KEY NOT NULL,
         valor decimal(10, 2) DEFAULT 0,
@@ -71,7 +73,8 @@ CREATE TABLE ERP_CLIENTE(
         nomedamae varchar(80),
         observacao varchar(250),
         dtalteracao date NOT NULL,
-        hralteracao TIME NOT NULL )
+        hralteracao TIME NOT NULL 
+        )
 CREATE TABLE erp_secao (
         idsecao integer primary key not null,
         descricao varchar(80)not null,
@@ -92,7 +95,7 @@ CREATE TABLE erp_estoque_analitico(
         idplanilha integer not null,
         tpmovimento varchar(1)  not null,
         quantidade Decimal(10,3) default 0,
-        obcervacao varchar(255),
+        observacao varchar(255),
         idusuario integer,
         dtalteracao date not null,
         hralteracao time not null,
