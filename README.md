@@ -73,7 +73,7 @@ CREATE TABLE ERP_CLIENTE(
         dtalteracao date NOT NULL,
         hralteracao TIME NOT NULL )
 CREATE TABLE erp_secao (
-        idsecao integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
+        idsecao integer primary key not null,
         descricao varchar(80)not null,
         dtalteracao date not null,
         hralteracao time not null
