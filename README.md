@@ -43,20 +43,6 @@ CREATE TABLE ERP_GRUPO(
         idsecao integer NOT NULL,
         dtalteracao date NOT NULL,
         hralteracao TIME NOT NULL)
-CREATE TABLE EPR_produto_preco_historico( 
-        idproduto integer NOT NULL,
-        idplanilha integer NOT NULL,
-        valro Decimal(10, 2) DEFAULT 0,
-        observacao varchar(255),
-        idusuario integer, dtalteracao date NOT NULL,
-        hralteracao TIME NOT NULL,
-        PRIMARY KEY (idproduto,
-        idplanilha))
-CREATE TABLE erp_produto_preco( 
-        idproduto integer PRIMARY KEY NOT NULL,
-        valor decimal(10, 2) DEFAULT 0,
-        idusuario integer, dtalteracao date NOT NULL,
-        hralteracao TIME NOT NULL)
 CREATE TABLE ERP_CLIENTE(
         idcliente integer PRIMARY KEY NOT NULL,
         nome varchar(80) NOT NULL,
