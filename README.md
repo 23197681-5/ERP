@@ -44,7 +44,7 @@ CREATE TABLE ERP_GRUPO(
         dtalteracao date NOT NULL,
         hralteracao TIME NOT NULL)
 CREATE TABLE ERP_CLIENTE(
-        idcliente integer PRIMARY KEY NOT NULL,
+        idcliente integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
         nome varchar(80) NOT NULL,
         tppessoa varchar(1) NOT NULL,
         cpfcnpj varchar(14),
@@ -57,7 +57,8 @@ CREATE TABLE ERP_CLIENTE(
         nomedamae varchar(80),
         observacao varchar(250),
         dtalteracao date NOT NULL,
-        hralteracao TIME NOT NULL )
+        hralteracao TIME NOT NULL
+)
 CREATE TABLE erp_secao (
         idsecao integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,	
         descricao varchar(80)not null,
