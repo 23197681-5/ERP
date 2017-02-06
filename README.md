@@ -36,13 +36,15 @@ SELECT *
 FROM erp_UltimoUsuario
 CREATE TABLE erp_config_contador( 
         chave varchar(20)PRIMARY KEY NOT NULL,
-        contador integer)
-CREATE TABLE ERP_GRUPO( 
-        idgrupo integer PRIMARY KEY NOT NULL,
+        contador integer
+        )
+CREATE TABLE ERP_GRUPO(
+        idgrupo integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
         descricao varchar(80) NOT NULL,
         idsecao integer NOT NULL,
         dtalteracao date NOT NULL,
-        hralteracao TIME NOT NULL)
+        hralteracao TIME NOT NULL
+        )
 CREATE TABLE ERP_CLIENTE(
         idcliente integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
         nome varchar(80) NOT NULL,
