@@ -11,41 +11,52 @@ CREATE TABLE erp_usuario(
         email varchar(80),
         fone varchar(20),
         dtalteracao date NOT NULL,
-        hralteracao TIME NOT NULL) GO
-COMMIT
-INSERT INTO ERP_USUARIO(login,
-                        senha,
-                        nome,
-                        dtalteracao,
-                        hralteracao)
-VALUES('Suporte',
+        hralteracao TIME NOT NULL
+        )
+INSERT INTO erp_usuario(
+        login,
+        senha,
+        nome,
+        dtalteracao,
+        hralteracao
+        )
+VALUES(
+        'Suporte',
        'Suporte',
        'Suporte',
        '03/01/2017',
-       '15:04')
+       '15:04'
+       )
 CREATE TABLE erp_UltimoUsuario(
-  Id integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
-  Nome varchar(20) NOT NULL,
-  Senha varchar(10) NOT NULL)
-INSERT INTO erp_UltimoUsuario(Nome,
-                              senha)
+        Id integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
+        Nome varchar(20) NOT NULL,
+        Senha varchar(10) NOT NULL)
+INSERT INTO erp_UltimoUsuario(
+        Nome,
+        senha
+        )
 VALUES('Usuario',
-       'Senha')
-COMMIT
-SELECT *
-FROM erp_UltimoUsuario
+       'Senha'
+       )
 CREATE TABLE erp_config_contador( 
         chave varchar(20)PRIMARY KEY NOT NULL,
         contador integer
         )
-CREATE TABLE ERP_GRUPO(
+CREATE TABLE erp_Grupo(
         idgrupo integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
         descricao varchar(80) NOT NULL,
         idsecao integer NOT NULL,
         dtalteracao date NOT NULL,
         hralteracao TIME NOT NULL
         )
-CREATE TABLE ERP_CLIENTE(
+CREATE TABLE erp_SubGrupo(
+        idsubgrupo integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
+        descricao varchar(80) NOT NULL,
+        idgrupo integer NOT NULL,
+        dtalteracao date NOT NULL,
+        hralteracao TIME NOT NULL
+        )
+CREATE TABLE erp_Cliente(
         idcliente integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,
         nome varchar(80) NOT NULL,
         tppessoa varchar(1) NOT NULL,
@@ -61,13 +72,13 @@ CREATE TABLE ERP_CLIENTE(
         dtalteracao date NOT NULL,
         hralteracao TIME NOT NULL
 )
-CREATE TABLE erp_secao (
+CREATE TABLE erp_Secao (
         idsecao integer PRIMARY KEY GENERATED always AS IDENTITY NOT NULL,	
         descricao varchar(80)not null,
         dtalteracao date not null,
         hralteracao time not null
  )
- CREATE TABLE erp_formapagrec(
+ CREATE TABLE erp_Formapagrec(
         idrecebimento integer not null primary key,
         descricao varchar(80) not null,
         tp_condicao varchar(1) not null default 'T',
