@@ -1,6 +1,6 @@
 # ERP
 ERP
-Using the odbc that you wanna create/adapt with this sql:
+Using the odbc that you wanna create/adapt with this SQL:
 ```SQL
 
 CREATE TABLE erp_usuario(
