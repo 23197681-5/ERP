@@ -47,6 +47,112 @@ INSERT INTO erp_UltimoUsuario(
 VALUES('Usuario',
        'Senha'
        );
+       
+
+CREATE TABLE erp_config_contador( 
+        chave varchar(20) NOT NULL,
+        contador integer,
+		CONSTRAINT erp_config_contador PRIMARY KEY (chave)
+        );
+
+CREATE TABLE erp_Grupo(
+        idgrupo integer NOT NULL,
+        descricao varchar(80) NOT NULL,
+        idsecao integer NOT NULL,
+        dtalteracao date NOT NULL,
+        hralteracao TIME NOT NULL,
+		CONSTRAINT erp_grupo PRIMARY KEY idgrupo
+        );
+CREATE UNIQUE INDEX sqlite_autoindex_idgrupo ON idGrupo (IdGrupo) ;
+
+CREATE TABLE erp_SubGrupo(
+        idSubGrupo integer NOT NULL,
+        descricao varchar(80) NOT NULL,
+        idgrupo integer NOT NULL,
+        dtalteracao date NOT NULL,
+        hralteracao TIME NOT NULL,
+		CONSTRAINT erp_SubGrupo PRIMARY KEY IdSubGrupo
+        );
+CREATE UNIQUE INDEX sqlite_autoindex_idsubgrupo
+ON idsubgrupo (idsubgrupo) ;
+
+CREATE TABLE erp_Cliente(
+        idcliente integer NOT NULL,
+        nome varchar(80) NOT NULL,
+        tppessoa varchar(1) NOT NULL,
+        cpfcnpj varchar(14),
+        rg varchar(15),
+        cep integer, endereco varchar(80),
+        numero integer, bairro varchar(80),
+        cidade varchar(80),
+        uf varchar(2),
+        email varchar(80),
+        nomedamae varchar(80),
+        observacao varchar(250),
+        dtalteracao date NOT NULL,
+        hralteracao TIME NOT NULL,
+		CONSTRAINT erp_Cliente PRIMARY KEY idcliente
+);
+CREATE UNIQUE INDEX sqlite_autoindex_idsubgrupo 
+ON idsubgrupo (idcliente) ;
+
+CREATE UNIQUE INDEX sqlite_autoindex_idcliente
+ON idcliente (idcliente) ;
+CREATE TABLE erp_Secao (
+        idsecao integerNOT NULL,  
+        descricao varchar(80)not null,
+        dtalteracao date not null,
+        hralteracao time not null,
+		CONSTRAINT erp_Secao PRIMARY KEY idSecao
+ );
+CREATE UNIQUE INDEX sqlite_autoindex_IdSecao 
+ON idSecao (idSecao) ;
+
+ CREATE TABLE erp_Formapagrec(
+        idrecebimento integer not null,
+        descricao varchar(80) not null,
+        tp_condicao varchar(1) not null default 'T',
+        flag_entrada varchar(1) not null,
+        qtdparcela integer default 0,
+        dtalteracao date null,
+        hralteracao time not null,
+		CONSTRAINT erp_FormaPagRec PRIMARY KEY idRecebimento
+);
+CREATE TABLE erp_estoque_analitico(
+        idproduto integer not null,
+        idplanilha integer not null,
+        tpmovimento varchar(1)  not null,
+        quantidade Decimal(10,3) default 0,
+        obcervacao varchar(255),
+        idusuario integer,
+        dtalteracao date not null,
+        hralteracao time not null,
+        PRIMARY KEY (idproduto,idplanilha)
+ );
+CREATE TABLE erp_estoque_saldo(
+        idproduto integer primary key not null,
+        saldo decimal(10, 2) default 0,
+        dtalteracao date not null,
+        hralteracao time not null
+);
+CREATE TABLE erp_produto_preco_historico(
+        idproduto integer not null,
+        idplanilha integer not null,
+        valor decimal(10,2) default 0,
+        observacao varchar(255),
+        idusuario integer,
+        dtalteracao date not null,
+        hralteracao time not null,
+        primary key(idproduto, idplanilha)
+);
+CREATE TABLE erp_produto_preco(
+        idproduto integer not null,
+        valor decimal(10, 2) default 0,
+        idusuario integer,
+        dtalteracao date not null,
+        hralteracao time not null,
+  	PRIMARY KEY (IdProduto)
+);
 ```
 **Script to ibm db2:** <br>
 ```SQL
