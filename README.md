@@ -95,6 +95,66 @@ CREATE TABLE erp_Cliente(
 
 CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_Cliente ON Erp_Cliente(IdCliente);
 
+CREATE TABLE Erp_Secao (
+	IdSecao Integer NOT NULL,  
+	Descricao Varchar(80) Not Null,
+	DtAlteracao Date Not Null,
+	HrAlteracao Time Not Null,
+	CONSTRAINT Erp_Secao PRIMARY KEY (IdSecao)
+);
+CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_Secao ON Erp_Secao(IdSecao);
+
+CREATE TABLE Erp_FormaPagRec(
+	IdRecebimento Integer Not Null,
+	Descricao Varchar(80) Not Null,
+	Tp_Condicao Varchar(1) Not Null default 'T',
+	Flag_Entrada Varchar(1) Not Null,
+	QtdParcela Integer Default 0,
+	DtAlteracao Date Null,
+	HrAlteracao Time Not Null,
+	CONSTRAINT Erp_FormaPagRec PRIMARY KEY (IdRecebimento)
+);
+CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_ForpmaPagRec ON Erp_FormaPagRec(IdRecebimento);
+
+CREATE TABLE Erp_Estoque_Analitico(
+    IdProduto Integer Not Null,
+    IdPlanilha Integer Not Null,
+    TpMovimento varchar(1)  Not Null,
+    Quantidade Decimal(10,3) Default 0,
+    Obcervacao Varchar(255),
+    IdUsuario Integer,
+    DtAlteracao Date Not Null,
+    HrAlteracao Time Not Null,
+    CONSTRAINT Erp_Estoque_Analitico PRIMARY KEY (IdProduto,IdPlanilha)
+ );
+
+CREATE TABLE Erp_Estoque_Saldo(
+    IdProduto Integer Not Null,
+    Saldo Decimal(10, 2) Default 0,
+    DtAlteracao Date Not Null,
+    DrAlteracao Time Not Null,
+    CONSTRAINT Erp_Estoque_Saldo PRIMARY KEY (IdProduto)
+);
+CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_Estoque_Saldo ON Erp_Estoque_Saldo(IdProduto);
+
+CREATE TABLE Erp_Produto_Preco_Historico(
+    IdProduto Integer Not Null,
+    IdPlanilha Integer Not Null,
+    Valor Decimal(10,2) Default 0,
+    Observacao Varchar(255),
+    IdUsuario Integer,
+    DtAlteracao Date Not Null,
+    HrAlteracao Time Not Null,
+    CONSTRAINT Erp_Produto_Preco_Historico Primary Key(idproduto, idplanilha)
+);
+CREATE TABLE Erp_Produto_Preco(
+    IdProduto Integer not Null,
+    Valor Decimal(10, 2) Default 0,
+    IdUsuario Integer,
+    DtAlteracao Date Not Null,
+    HrAlteracao Time Not Null,
+    CONSTRAINT Erp_Produto_Preco Primary Key(IdProduto)
+);
 ```
 **Script to ibm db2:** <br>
 ```SQL
