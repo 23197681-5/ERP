@@ -1,6 +1,39 @@
 # ERP
 ERP
 Using the odbc that you wanna create/adapt with this SQL:
+**Script Used For Sqlite:**<br>
+
+```SQL
+CREATE TABLE erp_usuario(
+        idusuario integer,
+        login varchar(20) NOT NULL,
+        senha varchar(10) NOT NULL,
+        nome varchar(80),
+        email varchar(80),
+        fone varchar(20),
+        dtalteracao date NOT NULL,
+        hralteracao TIME NOT NULL, 
+		CONSTRAINT erp_usuario PRIMARY KEY (idusuario)
+        );
+CREATE UNIQUE INDEX sqlite_autoindex_idusuario ON idusuario (Id) ;
+
+
+INSERT INTO erp_usuario(
+        login,
+        senha,
+        nome,
+        dtalteracao,
+        hralteracao
+        );
+VALUES(
+        'Suporte',
+       'Suporte',
+       'Suporte',
+       '03/01/2017',
+       '15:0);
+       
+```
+**Script to ibm db2:** <br>
 ```SQL
 
 CREATE TABLE erp_usuario(
