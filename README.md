@@ -54,6 +54,26 @@ CREATE TABLE erp_config_contador (
 	CONSTRAINT erp_config_contador PRIMARY KEY (chave)
 ) ;
 CREATE UNIQUE INDEX sqlite_autoindex_erp_config_contador_1 ON erp_config_contador (chave) ;
+CREATE TABLE erp_Grupo(
+	idgrupo integer NOT NULL,
+	descricao varchar(80) NOT NULL,
+	idsecao integer NOT NULL,
+	dtalteracao date NOT NULL,
+	hralteracao TIME NOT NULL,
+	CONSTRAINT erp_Grupo PRIMARY KEY (idGrupo)
+);
+CREATE UNIQUE INDEX sqlite_autoindex_erp_Grupo ON erp_Grupo (IdGrupo);
+
+CREATE TABLE erp_SubGrupo(
+        idsubgrupo integer NOT NULL,
+        descricao varchar(80) NOT NULL,
+        idgrupo integer NOT NULL,
+        dtalteracao date NOT NULL,
+        hralteracao TIME NOT NULL,
+		CONSTRAINT erp_SubGrupo PRIMARY KEY (idSubGrupo)
+);
+      
+CREATE UNIQUE INDEX sqlite_autoindex_erp_SubGrupo ON erp_SubGrupo (IdSubGrupo);
 
 
 ```
