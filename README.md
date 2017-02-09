@@ -75,6 +75,25 @@ CREATE TABLE erp_SubGrupo(
       
 CREATE UNIQUE INDEX sqlite_autoindex_erp_SubGrupo ON erp_SubGrupo (IdSubGrupo);
 
+CREATE TABLE erp_Cliente(
+	idcliente integer NOT NULL,
+	nome varchar(80) NOT NULL,
+	tppessoa varchar(1) NOT NULL,
+	cpfcnpj varchar(14),
+	rg varchar(15),
+	cep integer, endereco varchar(80),
+	numero integer, bairro varchar(80),
+	cidade varchar(80),
+	uf varchar(2),
+	email varchar(80),
+	nomedamae varchar(80),
+	observacao varchar(250),
+	dtalteracao date NOT NULL,
+	hralteracao TIME NOT NULL,
+	CONSTRAINT Erp_Cliente PRIMARY KEY (IdCliente)
+);
+
+CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_Cliente ON Erp_Cliente(IdCliente);
 
 ```
 **Script to ibm db2:** <br>
