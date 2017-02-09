@@ -94,17 +94,17 @@ CREATE TABLE erp_Cliente(
 );
 CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_Cliente ON Erp_Cliente(IdCliente);
 
-CREATE TABLE erp_Produto(
-	IdProduto integer Not Null,
-	Descricao varchar(80) Not NULL,
-	Marca Varchar(80) Not Null,
-	CodBar Decimal NOT NULL,
-	IdSubGrupo Integer Not Null,
-	Observacao VarChar(255),
-	DtAlteracao DATE NOT NULL,
-	HrAlteracao TIME NOT NULL,
-	CONSTRAINT Erp_Produto PRIMARY KEY (IdProduto)
-);
+CREATE TABLE erp_Produto (
+	IdProduto INTEGER NOT NULL,
+	Descricao VARCHAR(80) NOT NULL,
+	Marca VARCHAR(80) NOT NULL,
+	CodBar DECIMAL(2000000000,10) NOT NULL,
+	IdSubGrupo INTEGER NULL,
+	Observacao VARCHAR(255) NULL,
+	DtAlteracao DATE(2000000000) NOT NULL,
+	HrAlteracao TIME(2000000000) NOT NULL,
+	CONSTRAINT erp_produto PRIMARY KEY (IdProduto)
+) ;
 CREATE UNIQUE INDEX Sqlite_AutoIndex_erp_Produto ON Erp_Produto (IdProduto);
 
 CREATE TABLE Erp_Secao (
