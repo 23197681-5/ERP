@@ -159,14 +159,16 @@ CREATE TABLE Erp_Produto_Preco_Historico(
     HrAlteracao Time Not Null,
     CONSTRAINT Erp_Produto_Preco_Historico Primary Key(idproduto, idplanilha)
 );
-CREATE TABLE Erp_Produto_Preco(
-    IdProduto Integer not Null,
-    Valor Decimal(10, 2) Default 0,
-    IdUsuario Integer,
-    DtAlteracao Date Not Null,
-    HrAlteracao Time Not Null,
-    CONSTRAINT Erp_Produto_Preco Primary Key(IdProduto)
-);
+
+CREATE TABLE Erp_Produto_Preco (
+	IdProduto INTEGER NOT NULL,
+	Valor DECIMAL(10, 2) DEFAULT 0,
+	IdUsuario INTEGER Not NULL,
+	DtAlteracao DATE(2000000000) NOT NULL,
+	HrAlteracao TIME(2000000000) NOT NULL,
+	CONSTRAINT ERP_PRODUTO_PRECO_PK PRIMARY KEY (IdProduto)
+) ;
+
 ```
 **Script to ibm db2:** <br>
 ```SQL
