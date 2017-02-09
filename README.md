@@ -32,6 +32,21 @@ VALUES(
        '03/01/2017',
        '15:0);
        
+CREATE TABLE erp_UltimoUsuario(
+        Id integer  NOT NULL,
+        Nome varchar(20) NOT NULL,
+        Senha varchar(10) NOT NULL,
+		CONSTRAINT erp_ultimousuario PRIMARY KEY (Id)
+);
+
+CREATE UNIQUE INDEX sqlite_autoindex_ultimoUsuario ON id (erp_UltimoUsuario) ;
+INSERT INTO erp_UltimoUsuario(
+        Nome,
+        senha
+        );
+VALUES('Usuario',
+       'Senha'
+       );
 ```
 **Script to ibm db2:** <br>
 ```SQL
