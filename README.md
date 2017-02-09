@@ -5,74 +5,74 @@ Using the odbc that you wanna create/adapt with this SQL:<br>
 
 ```SQL
 CREATE TABLE erp_usuario(
-        idusuario integer,
-        login varchar(20) NOT NULL,
-        senha varchar(10) NOT NULL,
-        nome varchar(80),
-        email varchar(80),
-        fone varchar(20),
-        dtalteracao date NOT NULL,
-        hralteracao TIME NOT NULL, 
-		CONSTRAINT erp_usuario PRIMARY KEY (idusuario)
-        );
+    idusuario integer,
+    login varchar(20) NOT NULL,
+    senha varchar(10) NOT NULL,
+    nome varchar(80),
+    email varchar(80),
+    fone varchar(20),
+    dtalteracao date NOT NULL,
+    hralteracao TIME NOT NULL, 
+    CONSTRAINT erp_usuario PRIMARY KEY (idusuario)
+);
 CREATE UNIQUE INDEX sqlite_autoindex_idusuario ON idusuario (Id) ;
 
 
 INSERT INTO erp_usuario(
-        login,
-        senha,
-        nome,
-        dtalteracao,
-        hralteracao
+    login,
+    senha,
+    nome,
+    dtalteracao,
+    hralteracao
         );
 VALUES(
-        'Suporte',
-       'Suporte',
-       'Suporte',
-       '03/01/2017',
-       '15:0');
-       
+    'Suporte',
+   'Suporte',
+   'Suporte',
+   '03/01/2017',
+   '15:0');
+
 CREATE TABLE erp_UltimoUsuario(
-        Id integer  NOT NULL,
-        Nome varchar(20) NOT NULL,
-        Senha varchar(10) NOT NULL,
-		CONSTRAINT erp_ultimousuario PRIMARY KEY (Id)
+    Id integer  NOT NULL,
+    Nome varchar(20) NOT NULL,
+    Senha varchar(10) NOT NULL,
+    CONSTRAINT erp_ultimousuario PRIMARY KEY (Id)
 );
 
 CREATE UNIQUE INDEX sqlite_autoindex_ultimoUsuario ON id (erp_UltimoUsuario) ;
 INSERT INTO erp_UltimoUsuario(
-        Nome,
-        senha
+    Nome,
+    senha
         );
 VALUES('Usuario',
        'Senha'
        );
-       
+
 CREATE TABLE erp_config_contador (
-	chave VARCHAR(20) NOT NULL,
-	contador INTEGER NULL,
-	CONSTRAINT erp_config_contador PRIMARY KEY (chave)
+    chave VARCHAR(20) NOT NULL,
+    contador INTEGER NULL,
+    CONSTRAINT erp_config_contador PRIMARY KEY (chave)
 ) ;
 CREATE UNIQUE INDEX sqlite_autoindex_erp_config_contador_1 ON erp_config_contador (chave) ;
 CREATE TABLE erp_Grupo(
-	idgrupo integer NOT NULL,
-	descricao varchar(80) NOT NULL,
-	idsecao integer NOT NULL,
-	dtalteracao date NOT NULL,
-	hralteracao TIME NOT NULL,
-	CONSTRAINT erp_Grupo PRIMARY KEY (idGrupo)
+    idgrupo integer NOT NULL,
+    descricao varchar(80) NOT NULL,
+    idsecao integer NOT NULL,
+    dtalteracao date NOT NULL,
+    hralteracao TIME NOT NULL,
+    CONSTRAINT erp_Grupo PRIMARY KEY (idGrupo)
 );
 CREATE UNIQUE INDEX sqlite_autoindex_erp_Grupo ON erp_Grupo (IdGrupo);
 
 CREATE TABLE erp_SubGrupo(
-        idsubgrupo integer NOT NULL,
-        descricao varchar(80) NOT NULL,
-        idgrupo integer NOT NULL,
-        dtalteracao date NOT NULL,
-        hralteracao TIME NOT NULL,
-		CONSTRAINT erp_SubGrupo PRIMARY KEY (idSubGrupo)
+    idsubgrupo integer NOT NULL,
+    descricao varchar(80) NOT NULL,
+    idgrupo integer NOT NULL,
+    dtalteracao date NOT NULL,
+    hralteracao TIME NOT NULL,
+    CONSTRAINT erp_SubGrupo PRIMARY KEY (idSubGrupo)
 );
-      
+
 CREATE UNIQUE INDEX sqlite_autoindex_erp_SubGrupo ON erp_SubGrupo (IdSubGrupo);
 
 CREATE TABLE erp_Cliente(
@@ -95,15 +95,15 @@ CREATE TABLE erp_Cliente(
 CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_Cliente ON Erp_Cliente(IdCliente);
 
 CREATE TABLE erp_Produto(
-    IdProduto integer Not Null,
-    Descricao varchar(80) Not NULL,
-    Marca Varchar(80) Not Null,
-    CodBar Decimal NOT NULL,
-    IdSubGrupo Integer Not Null,
-    Observacao VarChar(255),
-    DtAlteracao DATE NOT NULL,
-    HrAlteracao TIME NOT NULL,
-    CONSTRAINT Erp_Produto PRIMARY KEY (IdProduto)
+	IdProduto integer Not Null,
+	Descricao varchar(80) Not NULL,
+	Marca Varchar(80) Not Null,
+	CodBar Decimal NOT NULL,
+	IdSubGrupo Integer Not Null,
+	Observacao VarChar(255),
+	DtAlteracao DATE NOT NULL,
+	HrAlteracao TIME NOT NULL,
+	CONSTRAINT Erp_Produto PRIMARY KEY (IdProduto)
 );
 CREATE UNIQUE INDEX Sqlite_AutoIndex_erp_Produto ON Erp_Produto (IdProduto);
 
@@ -117,14 +117,14 @@ CREATE TABLE Erp_Secao (
 CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_Secao ON Erp_Secao(IdSecao);
 
 CREATE TABLE Erp_FormaPagRec(
-	IdRecebimento Integer Not Null,
-	Descricao Varchar(80) Not Null,
-	Tp_Condicao Varchar(1) Not Null default 'T',
-	Flag_Entrada Varchar(1) Not Null,
-	QtdParcela Integer Default 0,
-	DtAlteracao Date Null,
-	HrAlteracao Time Not Null,
-	CONSTRAINT Erp_FormaPagRec PRIMARY KEY (IdRecebimento)
+		IdRecebimento Integer Not Null,
+		Descricao Varchar(80) Not Null,
+		Tp_Condicao Varchar(1) Not Null default 'T',
+		Flag_Entrada Varchar(1) Not Null,
+		QtdParcela Integer Default 0,
+		DtAlteracao Date Null,
+		HrAlteracao Time Not Null,
+		CONSTRAINT Erp_FormaPagRec PRIMARY KEY (IdRecebimento)
 );
 CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_ForpmaPagRec ON Erp_FormaPagRec(IdRecebimento);
 
