@@ -30,7 +30,7 @@ VALUES(
        'Suporte',
        'Suporte',
        '03/01/2017',
-       '15:0);
+       '15:0');
        
 CREATE TABLE erp_UltimoUsuario(
         Id integer  NOT NULL,
