@@ -128,24 +128,26 @@ CREATE TABLE Erp_FormaPagRec(
 );
 CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_ForpmaPagRec ON Erp_FormaPagRec(IdRecebimento);
 
-CREATE TABLE Erp_Estoque_Analitico(
-    IdProduto Integer Not Null,
-    IdPlanilha Integer Not Null,
-    TpMovimento varchar(1)  Not Null,
-    Quantidade Decimal(10,3) Default 0,
-    Obcervacao Varchar(255),
-    IdUsuario Integer,
-    DtAlteracao Date Not Null,
-    HrAlteracao Time Not Null,
-    CONSTRAINT Erp_Estoque_Analitico PRIMARY KEY (IdProduto,IdPlanilha)
- );
+CREATE TABLE erp_estoque_analitico (
+	idproduto INTEGER NOT NULL,
+	idplanilha INTEGER NOT NULL,
+	tpmovimento VARCHAR(1) NOT NULL,
+	quantidade VARCHAR(15) NULL DEFAULT 0,
+	observacao VARCHAR(255) NULL,
+	idusuario INTEGER NULL,
+	dtalteracao DATE(2000000000) NOT NULL,
+	hralteracao TIME(2000000000) NOT NULL,
+	CONSTRAINT ERP_ESTOQUE_ANALITICO_PK PRIMARY KEY (idproduto,idplanilha)
+) ;
+CREATE UNIQUE INDEX sqlite_autoindex_erp_estoque_analitico_1 ON erp_estoque_analitico (idproduto,idplanilha) ;
 
-CREATE TABLE Erp_Estoque_Saldo (
-	IdProduto INTEGER NOT NULL,
-	Saldo VARCHAR(15) NULL DEFAULT 0,
-	DtAlteracao DATE(2000000000) NOT NULL,
-	DrAlteracao TIME(2000000000) NOT NULL,
-	CONSTRAINT erp_estoque_saldo PRIMARY KEY (IdProduto)
+
+	CREATE TABLE Erp_Estoque_Saldo (
+		IdProduto INTEGER NOT NULL,
+		Saldo VARCHAR(15) NULL DEFAULT 0,
+		DtAlteracao DATE(2000000000) NOT NULL,
+		DrAlteracao TIME(2000000000) NOT NULL,
+		CONSTRAINT erp_estoque_saldo PRIMARY KEY (IdProduto)
 ) ;
 
 CREATE TABLE Erp_Produto_Preco_Historico(
