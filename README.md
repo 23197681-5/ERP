@@ -117,14 +117,14 @@ CREATE TABLE Erp_Secao (
 CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_Secao ON Erp_Secao(IdSecao);
 
 CREATE TABLE Erp_FormaPagRec(
-		IdRecebimento Integer Not Null,
-		Descricao Varchar(80) Not Null,
-		Tp_Condicao Varchar(1) Not Null default 'T',
-		Flag_Entrada Varchar(1) Not Null,
-		QtdParcela Integer Default 0,
-		DtAlteracao Date Null,
-		HrAlteracao Time Not Null,
-		CONSTRAINT Erp_FormaPagRec PRIMARY KEY (IdRecebimento)
+	IdRecebimento Integer Not Null,
+	Descricao Varchar(80) Not Null,
+	Tp_Condicao Varchar(1) Not Null default 'T',
+	Flag_Entrada Varchar(1) Not Null,
+	QtdParcela Integer Default 0,
+	DtAlteracao Date Null,
+	HrAlteracao Time Not Null,
+	CONSTRAINT Erp_FormaPagRec PRIMARY KEY (IdRecebimento)
 );
 CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_ForpmaPagRec ON Erp_FormaPagRec(IdRecebimento);
 
@@ -162,12 +162,13 @@ CREATE TABLE Erp_Produto_Preco_Historico(
 
 CREATE TABLE Erp_Produto_Preco (
 	IdProduto INTEGER NOT NULL,
-	Valor DECIMAL(10, 2) DEFAULT 0,
-	IdUsuario INTEGER Not NULL,
+	Valor VARCHAR(15) NOT NULL,
+	IdUsuario INTEGER NOT NULL,
 	DtAlteracao DATE(2000000000) NOT NULL,
 	HrAlteracao TIME(2000000000) NOT NULL,
-	CONSTRAINT ERP_PRODUTO_PRECO_PK PRIMARY KEY (IdProduto)
+	CONSTRAINT erp_produto_preco_pk PRIMARY KEY (IdProduto)
 ) ;
+
 
 ```
 **Script to ibm db2:** <br>
