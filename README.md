@@ -140,14 +140,13 @@ CREATE TABLE Erp_Estoque_Analitico(
     CONSTRAINT Erp_Estoque_Analitico PRIMARY KEY (IdProduto,IdPlanilha)
  );
 
-CREATE TABLE Erp_Estoque_Saldo(
-    IdProduto Integer Not Null,
-    Saldo Decimal(10, 2) Default 0,
-    DtAlteracao Date Not Null,
-    DrAlteracao Time Not Null,
-    CONSTRAINT Erp_Estoque_Saldo PRIMARY KEY (IdProduto)
-);
-CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_Estoque_Saldo ON Erp_Estoque_Saldo(IdProduto);
+CREATE TABLE Erp_Estoque_Saldo (
+	IdProduto INTEGER NOT NULL,
+	Saldo VARCHAR(15) NULL DEFAULT 0,
+	DtAlteracao DATE(2000000000) NOT NULL,
+	DrAlteracao TIME(2000000000) NOT NULL,
+	CONSTRAINT erp_estoque_saldo PRIMARY KEY (IdProduto)
+) ;
 
 CREATE TABLE Erp_Produto_Preco_Historico(
     IdProduto Integer Not Null,
