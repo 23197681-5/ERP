@@ -179,4 +179,12 @@ BEGIN
  			INSERT INTO ERP_ESTOQUE_SALDO (IDPRODUTO, SALDO) VALUES (ERP_PRODUTO.IDPRODUTO, 0);
 END;
 
+ SELECT Produto.IdProduto
+		 FROM Erp_Produto as Produto 
+		 WHERE(NOT EXISTS
+		 ( SELECT SALDO.IdProduto
+		 FROM erp_Estoque_Saldo as Saldo 
+		 WHERE Saldo.IdProduto = Produto.IdProduto
+		 ) )
+		 
 ```
