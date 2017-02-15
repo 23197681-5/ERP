@@ -149,6 +149,7 @@ CREATE TABLE Erp_Estoque_Saldo (
 	DtAlteracao DATE(2000000000) NOT NULL,
 	HrAlteracao TIME(2000000000) NOT NULL,
 	CONSTRAINT erp_estoque_saldo PRIMARY KEY (IdProduto)
+	CONSTRAINT FK_Erp_Estoque_Saldo_Erp_Produto FOREIGN KEY (IdProduto) REFERENCES erp_Produto(IdProduto)
 ) ;
 
 CREATE TABLE Erp_Produto_Preco_Historico (
