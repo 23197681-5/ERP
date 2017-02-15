@@ -147,7 +147,7 @@ CREATE TABLE Erp_Estoque_Saldo (
 	IdProduto INTEGER NOT NULL,
 	Saldo VARCHAR(15) NULL DEFAULT 0,
 	DtAlteracao DATE(2000000000) NOT NULL,
-	DrAlteracao TIME(2000000000) NOT NULL,
+	HrAlteracao TIME(2000000000) NOT NULL,
 	CONSTRAINT erp_estoque_saldo PRIMARY KEY (IdProduto)
 ) ;
 
