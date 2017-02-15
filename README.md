@@ -174,9 +174,8 @@ CREATE TABLE Erp_Produto_Preco (
 CREATE TRIGGER tr_ins_estoque_saldo
 AFTER INSERT ON Erp_Produto
 --WHEN (NEW.t IS NULL)
-WHEN Erp_Estoque_Saldo <> Erp_Produto_IdProduto
 BEGIN
-            INSERT INTO ERP_ESTOQUE_SALDO (IDPRODUTO) SELECT Produto.IdProduto
+            INSERT INTO ERP_ESTOQUE_SALDO(IDPRODUTO, DtAlteracao, HrAlteracao) SELECT Produto.IdProduto, DtAlteracao, HrAlteracao
 		 FROM Erp_Produto as Produto 
 		 WHERE(NOT EXISTS
 		 ( SELECT SALDO.IdProduto
@@ -184,7 +183,6 @@ BEGIN
 		 WHERE Saldo.IdProduto = Produto.IdProduto
 		 ) );
 END;
-
  		
 		 
 		   
