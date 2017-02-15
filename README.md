@@ -151,16 +151,19 @@ CREATE TABLE Erp_Estoque_Saldo (
 	CONSTRAINT erp_estoque_saldo PRIMARY KEY (IdProduto)
 ) ;
 
-CREATE TABLE Erp_Produto_Preco_Historico(
-    IdProduto Integer Not Null,
-    IdPlanilha Integer Not Null,
-    Valor Decimal(10,2) Default 0,
-    Observacao Varchar(255),
-    IdUsuario Integer,
-    DtAlteracao Date Not Null,
-    HrAlteracao Time Not Null,
-    CONSTRAINT Erp_Produto_Preco_Historico Primary Key(idproduto, idplanilha)
-);
+CREATE TABLE Erp_Produto_Preco_Historico (
+	idproduto INTEGER NOT NULL,
+	idplanilha INTEGER NOT NULL,
+	valor DECIMAL(10,2) NULL DEFAULT 0,
+	observacao VARCHAR(255) NULL,
+	idusuario INTEGER NULL,
+	dtalteracao DATE(2000000000) NOT NULL,
+	hralteracao TIME(2000000000) NOT NULL,
+	CONSTRAINT ERP_PRODUTO_PRECO_HISTORICO_PK PRIMARY KEY (idplanilha)
+	CONSTRAINT FK_Erp_Produto_Preco_Historico_Erp_Produto FOREIGN KEY (idproduto) REFERENCES erp_Produto(IdProduto)
+	) ;
+CREATE UNIQUE INDEX sqlite_autoindex_erp_produto_preco_historico_1 ON erp_produto_preco_historico (idproduto,idplanilha) ;
+
 
 CREATE TABLE Erp_Produto_Preco (
 	IdProduto INTEGER NOT NULL,
