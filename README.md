@@ -64,16 +64,18 @@ CREATE TABLE erp_Grupo(
 );
 CREATE UNIQUE INDEX sqlite_autoindex_erp_Grupo ON erp_Grupo (IdGrupo);
 
-CREATE TABLE erp_SubGrupo(
-    idsubgrupo integer NOT NULL,
-    descricao varchar(80) NOT NULL,
-    idgrupo integer NOT NULL,
-    dtalteracao date NOT NULL,
-    hralteracao TIME NOT NULL,
-    CONSTRAINT erp_SubGrupo PRIMARY KEY (idSubGrupo)
-);
 
-CREATE UNIQUE INDEX sqlite_autoindex_erp_SubGrupo ON erp_SubGrupo (IdSubGrupo);
+CREATE TABLE Erp_Grupo (
+	IdGrupo INTEGER NOT NULL,
+	Descricao VARCHAR(80) NOT NULL,
+	IdSecao INTEGER NOT NULL,
+	DtAlteracao DATE(2000000000) NOT NULL,
+	HrAlteracao TIME(2000000000) NOT NULL,
+	CONSTRAINT erp_grupo PRIMARY KEY (idgrupo)
+	    CONSTRAINT FK_Erp_SubGrupo FOREIGN KEY (IdSecao) REFERENCES Erp_Secao(IdSecao)
+) ;
+CREATE UNIQUE INDEX sqlite_autoindex_erp_Grupo ON erp_Grupo (IdGrupo);
+
 
 CREATE TABLE erp_Cliente(
 	idcliente integer NOT NULL,
@@ -165,15 +167,16 @@ CREATE TABLE Erp_Produto_Preco_Historico (
 	) ;
 CREATE UNIQUE INDEX sqlite_autoindex_erp_produto_preco_historico_1 ON erp_produto_preco_historico (idproduto,idplanilha) ;
 
-
 CREATE TABLE Erp_Produto_Preco (
 	IdProduto INTEGER NOT NULL,
 	Valor VARCHAR(15) NOT NULL,
 	IdUsuario INTEGER NOT NULL,
 	DtAlteracao DATE(2000000000) NOT NULL,
 	HrAlteracao TIME(2000000000) NOT NULL,
-	CONSTRAINT erp_produto_preco_pk PRIMARY KEY (IdProduto)
+	CONSTRAINT erp_produto_preco_pk PRIMARY KEY (IdProduto),
+   	CONSTRAINT FK_Erp_Produto_Preco FOREIGN KEY (IdUsuario) REFERENCES Erp_Usuario(IdUsuario)
 ) ;
+CREATE UNIQUE INDEX sqlite_autoindex_idusuario ON idusuario (Id) ;
 
 CREATE TRIGGER tr_ins_estoque_saldo
 AFTER INSERT ON Erp_Produto
