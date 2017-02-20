@@ -4,6 +4,10 @@ Using the odbc that you wanna create/adapt with this SQL:<br>
 **Script Used For Sqlite:**<br>
 
 ```SQL
+
+PRAGMA foreign_keys = ON;   -- sqlite foreign key support is off by default.
+PRAGMA temp_store = 2;      -- store temp table in memory, not on disk.
+
 CREATE TABLE erp_usuario(
     idusuario integer,
     login varchar(20) NOT NULL,
