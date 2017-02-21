@@ -9,47 +9,49 @@ PRAGMA foreign_keys = ON;   -- sqlite foreign key support is off by default.
 PRAGMA temp_store = 2;      -- store temp table in memory, not on disk.
 
 CREATE TABLE erp_usuario(
-    idusuario integer,
-    login varchar(20) NOT NULL,
-    senha varchar(10) NOT NULL,
-    nome varchar(80),
-    email varchar(80),
-    fone varchar(20),
-    dtalteracao date NOT NULL,
-    hralteracao TIME NOT NULL, 
-    CONSTRAINT erp_usuario PRIMARY KEY (idusuario)
+	idusuario integer,
+	login varchar(20) NOT NULL,
+	senha varchar(10) NOT NULL,
+	nome varchar(80),
+	email varchar(80),
+	fone varchar(20),
+	dtalteracao date NOT NULL,
+	hralteracao TIME NOT NULL, 
+	CONSTRAINT erp_usuario PRIMARY KEY (idusuario)
 );
 CREATE UNIQUE INDEX sqlite_autoindex_idusuario ON idusuario (Id) ;
 
 
 INSERT INTO erp_usuario(
-    login,
-    senha,
-    nome,
-    dtalteracao,
-    hralteracao
-        );
+	login,
+	senha,
+	nome,
+	dtalteracao,
+	hralteracao
+);
 VALUES(
-    'Suporte',
-   'Suporte',
-   'Suporte',
-   '03/01/2017',
-   '15:0');
-
-CREATE TABLE erp_UltimoUsuario(
-    Id integer  NOT NULL,
-    Nome varchar(20) NOT NULL,
-    Senha varchar(10) NOT NULL,
-    CONSTRAINT erp_ultimousuario PRIMARY KEY (Id)
+	'Suporte',
+	'Suporte',
+	'Suporte',
+	'03/01/2017',
+	'15:0'
 );
 
+CREATE TABLE erp_UltimoUsuario(
+	Id integer  NOT NULL,
+	Nome varchar(20) NOT NULL,
+	Senha varchar(10) NOT NULL,
+	CONSTRAINT erp_ultimousuario PRIMARY KEY (Id)
+);
 CREATE UNIQUE INDEX sqlite_autoindex_ultimoUsuario ON id (erp_UltimoUsuario) ;
+
 INSERT INTO erp_UltimoUsuario(
-    Nome,
-    senha
-        );
-VALUES('Usuario',
-       'Senha'
+	Nome,
+	senha
+);
+VALUES(
+	'Usuario',
+	'Senha'
        );
 
 CREATE TABLE Erp_Config_Contador (
@@ -70,6 +72,16 @@ CREATE TABLE Erp_Grupo (
 	) ;
 CREATE UNIQUE INDEX sqlite_autoindex_erp_Grupo ON erp_Grupo (IdGrupo);
 
+CREATE TABLE Erp_SubGrupo(
+	idsubgrupo integer NOT NULL,
+	descricao varchar(80) NOT NULL,
+	idgrupo integer NOT NULL,
+	dtalteracao date NOT NULL,
+	hralteracao TIME NOT NULL,
+	CONSTRAINT erp_SubGrupo PRIMARY KEY (idSubGrupo),
+	CONSTRAINT FK_Erp_SubGrupo FOREIGN KEY (IdGrupo) REFERENCES Erp_Grupo(IdGrupo) ON DELETE CASCADE
+);
+CREATE UNIQUE INDEX sqlite_autoindex_erp_SubGrupo ON erp_SubGrupo (IdSubGrupo);
 
 CREATE TABLE erp_Cliente(
 	idcliente integer NOT NULL,
