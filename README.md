@@ -52,22 +52,12 @@ VALUES('Usuario',
        'Senha'
        );
 
-CREATE TABLE erp_config_contador (
-    chave VARCHAR(20) NOT NULL,
-    contador INTEGER NULL,
-    CONSTRAINT erp_config_contador PRIMARY KEY (chave)
+CREATE TABLE Erp_Config_Contador (
+	chave VARCHAR(20) NOT NULL,
+	contador INTEGER NULL,
+	CONSTRAINT erp_config_contador PRIMARY KEY (chave)
 ) ;
 CREATE UNIQUE INDEX sqlite_autoindex_erp_config_contador_1 ON erp_config_contador (chave) ;
-CREATE TABLE erp_Grupo(
-    idgrupo integer NOT NULL,
-    descricao varchar(80) NOT NULL,
-    idsecao integer NOT NULL,
-    dtalteracao date NOT NULL,
-    hralteracao TIME NOT NULL,
-    CONSTRAINT erp_Grupo PRIMARY KEY (idGrupo)
-);
-CREATE UNIQUE INDEX sqlite_autoindex_erp_Grupo ON erp_Grupo (IdGrupo);
-
 
 CREATE TABLE Erp_Grupo (
 	IdGrupo INTEGER NOT NULL,
@@ -76,8 +66,8 @@ CREATE TABLE Erp_Grupo (
 	DtAlteracao DATE(2000000000) NOT NULL,
 	HrAlteracao TIME(2000000000) NOT NULL,
 	CONSTRAINT erp_grupo PRIMARY KEY (idgrupo)
-	    CONSTRAINT FK_Erp_SubGrupo FOREIGN KEY (IdSecao) REFERENCES Erp_Secao(IdSecao)
-) ;
+	CONSTRAINT FK_Erp_SubGrupo FOREIGN KEY (IdSecao) REFERENCES Erp_Secao(IdSecao) ON DELETE CASCADE
+	) ;
 CREATE UNIQUE INDEX sqlite_autoindex_erp_Grupo ON erp_Grupo (IdGrupo);
 
 
@@ -102,14 +92,14 @@ CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_Cliente ON Erp_Cliente(IdCliente);
 
 CREATE TABLE Erp_Produto (
 	IdProduto INTEGER NOT NULL,
-    	Descricao VARCHAR(80) NOT NULL,
-    	Marca VARCHAR(80) NOT NULL,
-    	CodBar INTEGER NOT NULL,
-    	IdSubGrupo INTEGER NULL,
-    	Observacao VARCHAR(255) NULL,
-    	DtAlteracao DATE(2000000000) NOT NULL,
-    	HrAlteracao TIME(2000000000) NOT NULL,
-    	CONSTRAINT erp_produto PRIMARY KEY (IdProduto)
+	Descricao VARCHAR(80) NOT NULL,
+	Marca VARCHAR(80) NOT NULL,
+	CodBar INTEGER NOT NULL,
+	IdSubGrupo INTEGER NULL,
+	Observacao VARCHAR(255) NULL,
+	DtAlteracao DATE(2000000000) NOT NULL,
+	HrAlteracao TIME(2000000000) NOT NULL,
+	CONSTRAINT erp_produto PRIMARY KEY (IdProduto)
 ) ;
 CREATE UNIQUE INDEX Sqlite_AutoIndex_erp_Produto ON Erp_Produto (IdProduto);
 
@@ -148,14 +138,13 @@ CREATE TABLE Erp_Estoque_Analitico (
 ) ;
 CREATE UNIQUE INDEX sqlite_autoindex_erp_estoque_analitico_1 ON erp_estoque_analitico (idplanilha) ;
 
-
 CREATE TABLE Erp_Estoque_Saldo (
 	IdProduto INTEGER NOT NULL,
 	Saldo VARCHAR(15) NULL DEFAULT 0,
 	DtAlteracao DATE(2000000000) NOT NULL,
 	HrAlteracao TIME(2000000000) NOT NULL,
 	CONSTRAINT erp_estoque_saldo PRIMARY KEY (IdProduto)
-	CONSTRAINT FK_Erp_Estoque_Saldo_Erp_Produto FOREIGN KEY (IdProduto) REFERENCES erp_Produto(IdProduto)
+	CONSTRAINT FK_Erp_Estoque_Saldo_Erp_Produto FOREIGN KEY (IdProduto) REFERENCES erp_Produto(IdProduto) ON DELETE CASCADE
 ) ;
 
 CREATE TABLE Erp_Produto_Preco_Historico (
@@ -167,9 +156,10 @@ CREATE TABLE Erp_Produto_Preco_Historico (
 	dtalteracao DATE(2000000000) NOT NULL,
 	hralteracao TIME(2000000000) NOT NULL,
 	CONSTRAINT ERP_PRODUTO_PRECO_HISTORICO_PK PRIMARY KEY (idplanilha)
-	CONSTRAINT FK_Erp_Produto_Preco_Historico_Erp_Produto FOREIGN KEY (idproduto) REFERENCES erp_Produto(IdProduto)
+	CONSTRAINT FK_Erp_Produto_Preco_Historico_Erp_Produto FOREIGN KEY (idproduto) REFERENCES erp_Produto(IdProduto) ON 	DELETE CASCADE
 	) ;
 CREATE UNIQUE INDEX sqlite_autoindex_erp_produto_preco_historico_1 ON erp_produto_preco_historico (idproduto,idplanilha) ;
+
 
 CREATE TABLE Erp_Produto_Preco (
 	IdProduto INTEGER NOT NULL,
