@@ -171,16 +171,15 @@ CREATE TABLE Erp_Produto_Preco_Historico (
 	) ;
 CREATE UNIQUE INDEX sqlite_autoindex_erp_produto_preco_historico_1 ON erp_produto_preco_historico (idproduto,idplanilha) ;
 
-
 CREATE TABLE Erp_Produto_Preco (
 	IdProduto INTEGER NOT NULL,
-	Valor VARCHAR(15) NOT NULL,
+	Valor Real(10, 2) NOT NULL,
 	IdUsuario INTEGER NOT NULL,
 	DtAlteracao DATE(2000000000) NOT NULL,
 	HrAlteracao TIME(2000000000) NOT NULL,
 	CONSTRAINT erp_produto_preco_pk PRIMARY KEY (IdProduto),
-	CONSTRAINT FK_Erp_Produto_Preco FOREIGN KEY (IdUsuario) REFERENCES Erp_Usuario(IdUsuario),
-	CONSTRAINT FK_Erp_Produto FOREIGN KEY (IdProduto) REFERENCES Erp_Produto(IdProduto)
+	CONSTRAINT FK_Erp_Produto_Preco FOREIGN KEY (IdUsuario) REFERENCES Erp_Usuario(IdUsuario) ,
+	CONSTRAINT FK_Erp_Produto FOREIGN KEY (IdProduto) REFERENCES Erp_Produto(IdProduto) ON DELETE CASCADE
 ) ;
 CREATE UNIQUE INDEX sqlite_autoindex_idusuario ON idusuario (Id) ;
 
