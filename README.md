@@ -185,31 +185,30 @@ CREATE TABLE Erp_Produto_Preco (
 ) ;
 CREATE UNIQUE INDEX sqlite_autoindex_idusuario ON idusuario (Id) ;
 
-CREATE TRIGGER tr_ins_estoque_saldo
-AFTER INSERT ON Erp_Produto
+
+--AFTER INSERT ON Erp_Produto
 --WHEN (NEW.t IS NULL)
-BEGIN
-            INSERT INTO ERP_ESTOQUE_SALDO(IDPRODUTO, DtAlteracao, HrAlteracao) SELECT Produto.IdProduto, DtAlteracao, HrAlteracao
-		 FROM Erp_Produto as Produto 
-		 WHERE(NOT EXISTS
-		 ( SELECT SALDO.IdProduto
-		 FROM erp_Estoque_Saldo as Saldo 
-		 WHERE Saldo.IdProduto = Produto.IdProduto
-		 ) );
-END;
-
-CREATE TRIGGER tr_ins_preco_produto
-AFTER INSERT ON Erp_Produto
-BEGIN
-	INSERT INTO ERP_PRODUTO_PRECO(IDPRODUTO, DTALTERACAO, HRALTERACAO, VALOR, IDUSUARIO) SELECT  Produto.IdProduto, date('now'), time('now'), '0', '1' 
-		 FROM Erp_Produto as Produto 
-		 WHERE(NOT EXISTS
-		 ( SELECT PRECO_PRODUTO.IdProduto
-		 FROM erp_PRODUTO_PRECO as PRECO_PRODUTO 
-		 WHERE PRECO_PRODUTO.IdProduto = PRODUTO.IdProduto
-		 ) );
-END;
-
+--BEGIN
+--            INSERT INTO ERP_ESTOQUE_SALDO(IDPRODUTO, DtAlteracao, HrAlteracao) SELECT Produto.IdProduto, DtAlteracao, ------HrAlteracao
+--         FROM Erp_Produto as Produto 
+--         WHERE(NOT EXISTS
+--         ( SELECT SALDO.IdProduto
+--         FROM erp_Estoque_Saldo as Saldo 
+--         WHERE Saldo.IdProduto = Produto.IdProduto
+--         ) );
+--END;
+--
+--CREATE TRIGGER tr_ins_preco_produto
+--AFTER INSERT ON Erp_Produto
+--BEGIN
+--    INSERT INTO ERP_PRODUTO_PRECO(IDPRODUTO, DTALTERACAO, HRALTERACAO, VALOR, IDUSUARIO) SELECT  Produto.IdProduto, --date('now'), time('now'), '0', '1' 
+--         FROM Erp_Produto as Produto 
+--         WHERE(NOT EXISTS
+--         ( SELECT PRECO_PRODUTO.IdProduto
+--         FROM erp_PRODUTO_PRECO as PRECO_PRODUTO 
+--         WHERE PRECO_PRODUTO.IdProduto = PRODUTO.IdProduto
+--         ) );
+--END;
  		
 		 
 		   
