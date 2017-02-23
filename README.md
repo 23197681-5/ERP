@@ -152,7 +152,7 @@ CREATE UNIQUE INDEX sqlite_autoindex_erp_estoque_analitico_1 ON erp_estoque_anal
 
 CREATE TABLE Erp_Estoque_Saldo (
     IdProduto INTEGER NOT NULL,
-    Saldo DOUBLE(10, 2) NULL DEFAULT 0,
+    Saldo REAL NULL DEFAULT 0,
     DtAlteracao DATE(2000000000) NOT NULL,
     HrAlteracao TIME(2000000000) NOT NULL,
     CONSTRAINT erp_estoque_saldo PRIMARY KEY (IdProduto)
@@ -162,7 +162,7 @@ CREATE TABLE Erp_Estoque_Saldo (
 CREATE TABLE Erp_Produto_Preco_Historico (
 	idproduto INTEGER NOT NULL,
 	idplanilha INTEGER NOT NULL,
-	valor DECIMAL(10,2) NULL DEFAULT 0,
+	valor REAL NULL DEFAULT 0,
 	observacao VARCHAR(255) NULL,
 	idusuario INTEGER NULL,
 	dtalteracao DATE(2000000000) NOT NULL,
