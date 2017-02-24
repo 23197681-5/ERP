@@ -137,8 +137,8 @@ CREATE TABLE Erp_FormaPagRec(
 CREATE UNIQUE INDEX Sqlite_AutoIndex_Erp_ForpmaPagRec ON Erp_FormaPagRec(IdRecebimento);
 
 CREATE TABLE Erp_Estoque_Analitico (
-	idproduto INTEGER,
-	idplanilha INTEGER,
+	idproduto INTEGER NOT NULL,
+	idplanilha INTEGER NOT NULL,
 	tpmovimento VARCHAR(1) NOT NULL,
 	quantidade VARCHAR(15) NULL DEFAULT 0,
 	observacao VARCHAR(255) NULL,
